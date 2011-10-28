@@ -1,0 +1,289 @@
+﻿use farmasi ;
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+-- START MASTER DATA TABLE CREATIONS
+-- ALL MASTER DATA TABLE MUST BE UNDER THIS COMMENTS
+
+DROP TABLE IF EXISTS `jbh_ms_inventory`;
+CREATE TABLE `jbh_ms_inventory` (
+`id`  int unsigned NOT NULL auto_increment ,
+`batch_no`  Varchar(25) NOT NULL  Default '00' ,
+`inventory_code`  Varchar(20) NOT NULL  Default '00' ,
+`inventory_name`  Varchar(255) NOT NULL Default '-' ,
+`inventory_unit`  Varchar(10) NOT NULL Default '-' ,
+`inventory_delunit`  Varchar(10) NOT NULL Default '-' ,
+`inventory_price_buy`  Decimal(18,2) NOT NULL Default '0.00' ,
+`inventory_disc_buy`  Decimal(16,2) NOT NULL Default '0.00' ,
+`inventory_base_price`  Decimal(18,2) NOT NULL Default '0.00' ,
+`inventory_base_minstock`  int NOT NULL Default 0 ,
+`inventory_base_maxstock`  int NOT NULL Default 0 ,
+`inventory_expire_date`  date NOT NULL Default '00-00-0000' ,
+`inventory_flags`  tinyint NOT NULL Default 0 ,
+`inventory_isactive`  tinyint NOT NULL Default 0 ,
+`xinv_groupid`  Varchar(10) NOT NULL Default '-' ,
+`xinv_factoryid`  Varchar(10) NOT NULL Default '-' ,
+`xinv_rackid`  Varchar(10) NOT NULL Default '-' ,
+`xinv_coa_persediaanid`  Varchar(11) NOT NULL Default '-' ,
+`xinv_coa_pendapatanid`  Varchar(11) NOT NULL Default '-' ,
+`xinv_coa_biayaid`  Varchar(11) NOT NULL Default '-' ,
+`created_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`created_user`  varchar(20) NOT NULL Default '-' ,
+`update_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`update_user`  varchar(20) NOT NULL Default '-' ,
+`xfld01`  tinyint Default 0 ,
+`xfld02`  int Default 0 ,
+`xfld03`  bigint Default 0 ,
+`xfld04`  Decimal(18,2) Default '0.00' ,
+`xfld05`  Varchar(50) Default '-' ,
+`xfld06`  Varchar(100) Default '-' ,
+`xfld07`  Varchar(200) Default '-' ,
+`xfld08`  Varchar(255) Default '-' ,
+`xfld09`  Decimal(12,2) Default '0.00' ,
+`xfld10`  Decimal(10,0) Default '0.00' ,
+PRIMARY KEY (`id`) ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `jbh_ms_factory`;
+CREATE TABLE `jbh_ms_factory` (
+`id` int unsigned NOT NULL auto_increment ,
+`factory_code` Varchar(10) NOT NULL Default '00' ,
+`factory_name` Varchar(200) NOT NULL Default '00' ,
+`factory_address` Varchar(255) NOT NULL Default '-' ,
+`factory_phone` Varchar(18) NOT NULL Default '-' ,
+`factory_isactive` tinyint NOT NULL Default 0 ,
+`created_datetime` datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`created_user` varchar(20) NOT NULL Default '-' ,
+`update_datetime` datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`update_user` varchar(20) NOT NULL Default '-' ,
+`xfld01` tinyint Default 0 ,
+`xfld02` int Default 0 ,
+`xfld03` bigint Default 0 ,
+`xfld04` Decimal(18,2) Default '0.00' ,
+`xfld05` Varchar(50) Default '-' ,
+`xfld06` Varchar(100) Default '-' ,
+`xfld07` Varchar(200) Default '-' ,
+`xfld08` Varchar(255) Default '-' ,
+`xfld09` Decimal(12,2) Default '0.00' ,
+`xfld10` Decimal(10,0) Default '0.00' ,
+
+PRIMARY KEY (`id`) ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `jbh_ms_invgroup`;
+CREATE TABLE `jbh_ms_invgroup` (
+`id`  int unsigned NOT NULL auto_increment ,
+`invgroup_code`  Varchar(10) NOT NULL Default '00' ,
+`invgroup_name`  Varchar(100) NOT NULL Default '-' ,
+`invgroup_isactive`  tinyint NOT NULL Default 0 ,
+`created_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`created_user`  varchar(20) NOT NULL Default '-' ,
+`update_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`update_user`  varchar(20) NOT NULL Default '-' ,
+`xfld01`  tinyint NOT NULL Default 0 ,
+`xfld02`  int NOT NULL Default 0 ,
+`xfld03`  bigint Default 0 ,
+`xfld04`  Decimal(18,2) Default '0.00' ,
+`xfld05`  Varchar(50) Default '-' ,
+`xfld06`  Varchar(100) Default '-' ,
+`xfld07`  Varchar(200) Default '-' ,
+`xfld08`  Varchar(255) Default '-' ,
+`xfld09`  Decimal(12,2) Default '0.00' ,
+`xfld10`  Decimal(10,0) Default '0.00' ,
+PRIMARY KEY (`id`) ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `jbh_ms_rack`;
+CREATE TABLE `jbh_ms_rack` ( 
+`id`  int unsigned NOT NULL auto_increment ,
+`rack_code`  Varchar(10) NOT NULL Default '00' ,
+`rack_name`  Varchar(100) NOT NULL Default '-' ,
+`rack_warehouse`  Varchar(100) NOT NULL Default '-' ,
+`rack_isactive`  tinyint NOT NULL Default 0 ,
+`created_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`created_user`  varchar(20) NOT NULL Default '-' ,
+`update_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`update_user`  varchar(20) NOT NULL Default '-' ,
+`xfld01`  tinyint Default 0 ,
+`xfld02`  int Default 0 ,
+`xfld03`  bigint Default 0 ,
+`xfld04`  Decimal(18,2) Default '0.00' ,
+`xfld05`  Varchar(50) Default '-' ,
+`xfld06`  Varchar(100) Default '-' ,
+`xfld07`  Varchar(200) Default '-' ,
+`xfld08`  Varchar(255) Default '-' ,
+`xfld09`  Decimal(12,2) Default '0.00' ,
+`xfld10`  Decimal(10,0) Default '0.00' ,
+PRIMARY KEY (`id`) ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `jbh_ms_coa`;
+CREATE TABLE `jbh_ms_coa` (
+`id`  int unsigned NOT NULL auto_increment ,
+`coa_code`  Varchar(11) NOT NULL Default '00' ,
+`coa_name`  Varchar(200) NOT NULL Default '-' ,
+`coa_dk`  Char(1) NOT NULL Default "D" ,
+`coa_pl_bs`  Char(2) NOT NULL Default "PL" ,
+`coa_isactive`  tinyint NOT NULL Default 0 ,
+`xcoa_groupid`  Char(3) NOT NULL Default '000' ,
+`created_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`created_user`  varchar(20) NOT NULL Default '-' ,
+`update_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`update_user`  varchar(20) NOT NULL Default '-' ,
+`xfld01`  varchar(255) Default 0 ,
+`xfld02`  int Default 0 ,
+`xfld03`  bigint Default 0 ,
+`xfld04`  Decimal(18,2) Default '0.00' ,
+`xfld05`  Varchar(50) Default '-' ,
+PRIMARY KEY (`id`) ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+
+
+DROP TABLE IF EXISTS `jbh_ms_coagroup`;
+CREATE TABLE `jbh_ms_coagroup` (
+`id`  int unsigned NOT NULL auto_increment ,
+`coagroup_code`  Char(3) NOT NULL Default '000' ,
+`coagroup_name`  Varchar(200) NOT NULL Default '-' ,
+`coagroup_isactive`  tinyint NOT NULL Default 0 ,
+`created_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`created_user`  varchar(20) NOT NULL Default '-' ,
+`update_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`update_user`  varchar(20) NOT NULL Default '-' ,
+`xfld01`  varchar(255) Default 0 ,
+`xfld02`  int Default 0 ,
+`xfld03`  bigint Default 0 ,
+`xfld04`  Decimal(18,2) Default '0.00' ,
+`xfld05`  Varchar(50) Default '-' ,
+PRIMARY KEY (`id`) ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+
+
+DROP TABLE IF EXISTS `jbh_ms_pbf`;
+CREATE TABLE `jbh_ms_pbf` (
+`id`  int unsigned NOT NULL auto_increment ,
+`pbf_code`  varchar(10) NOT NULL Default '00' ,
+`pbf_name`  varchar(255) NOT NULL Default '-' ,
+`pbf_address`  varchar(255) NOT NULL Default '-' ,
+`pbf_phone`  varchar(18) NOT NULL Default '-' ,
+`pbf_isactive`  tinyint NOT NULL Default 0 ,
+`xpbf_factoryid`  varchar(10) NOT NULL Default '-' ,
+`created_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`created_user`  varchar(20) NOT NULL Default '-' ,
+`update_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`update_user`  varchar(20) NOT NULL Default '-' ,
+`xfld01`  tinyint Default 0 ,
+`xfld02`  int Default 0 ,
+`xfld03`  bigint Default 0 ,
+`xfld04`  Decimal(18,2) Default '0.00' ,
+`xfld05`  Varchar(50) Default '-' ,
+`xfld06`  Varchar(100) Default '-' ,
+`xfld07`  Varchar(200) Default '-' ,
+`xfld08`  Varchar(255) Default '-' ,
+`xfld09`  Decimal(12,2) Default '0.00' ,
+`xfld10`  Decimal(10,0) Default '0.00' ,
+PRIMARY KEY (`id`) ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+-- END MASTER TABLE
+
+
+-- START BASE TRANSACTION TABLE CREATIONS
+-- ALL TRANSACTION TABLE MUST BE UNDER THIS COMMENTS
+
+DROP TABLE IF EXISTS `jbh_tpurchasehead`;
+CREATE TABLE `jbh_tpurchasehead` (
+`id`  int unsigned NOT NULL auto_increment ,
+`purhead_no`  char(20) NOT NULL Default '00' ,
+`purhead_date`  date NOT NULL Default '00-00-0000 00:00:00' ,
+`purhead_total`  decimal(16,2) NOT NULL Default '0.00' ,
+`purhead_totaldisc`  decimal(14,2) NOT NULL Default '0.00' ,
+`purhead_isppn`  decimal(14,2) NOT NULL Default '0.00' ,
+`purhead_grandtotal`  decimal(18,2) NOT NULL Default '0.00' ,
+`purhead_flags`  tinyint NOT NULL Default 0 ,
+`purhead_iscancel`  tinyint NOT NULL Default 0 ,
+`purhead_cancelnote`  varchar(255) NOT NULL Default '-' ,
+`purhead_returnote`  varchar(255) NOT NULL Default '-' ,
+`xpurhead_factoryid`  int NOT NULL Default 0 ,
+`xpurhead_pbfid`  int NOT NULL Default 0 ,
+`xpurhead_trcvheadid`  int NOT NULL Default 0 ,
+`xpurhead_tretrheadid`  int NOT NULL Default 0 ,
+`created_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`created_user`  varchar(20) NOT NULL Default '-' ,
+`update_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`update_user`  varchar(20) NOT NULL Default '-' ,
+`xfld01`  tinyint  Default 0 ,
+`xfld02`  int  Default 0 ,
+`xfld03`  bigint  Default 0 ,
+`xfld04`  Decimal(18,2)  Default '0.00' ,
+`xfld05`  Varchar(50)  Default '-' ,
+`xfld06`  Varchar(100)  Default '-' ,
+`xfld07`  Varchar(200)  Default '-' ,
+`xfld08`  Varchar(255)  Default '-' ,
+`xfld09`  Decimal(12,2)  Default '0.00' ,
+`xfld10`  Decimal(10,0)  Default '0.00' ,
+PRIMARY KEY (`id`) ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `jbh_tpurchasedet`;
+CREATE TABLE `jbh_tpurchasedet` (
+`id`  int unsigned NOT NULL auto_increment ,
+`xpurdet_purheadid`  int NOT NULL Default 0 ,
+`xpurdet_invid`  int NOT NULL Default 0 ,
+`purdet_qty`  int NOT NULL Default 0 ,
+`purdet_baseprice`  decimal(12,2) NOT NULL Default '0.00' ,
+`purdet_disc`  decimal(10,2) NOT NULL Default '0.00' ,
+`purdet_isppn`  tinyint NOT NULL Default 0 ,
+`purdet_flags`  tinyint NOT NULL Default 0 ,
+`purdet_iscancel`  tinyint NOT NULL Default 0 ,
+`purdet_isretur`  tinyint NOT NULL Default 0 ,
+`purdet_cancelnote`  varchar(255) NOT NULL Default '-' ,
+`purdet_returnote`  varchar(255) NOT NULL Default '-' ,
+`created_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`created_user`  varchar(20) NOT NULL Default '-' ,
+`update_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`update_user`  varchar(20) NOT NULL Default '-' ,
+`xfld01`  tinyint  Default 0 ,
+`xfld02`  int  Default 0 ,
+`xfld03`  bigint  Default 0 ,
+`xfld04`  Decimal(18,2)  Default '0.00' ,
+`xfld05`  Varchar(50)  Default '-' ,
+`xfld06`  Varchar(100)  Default '-' ,
+`xfld07`  Varchar(200)  Default '-' ,
+`xfld08`  Varchar(255)  Default '-' ,
+`xfld09`  Decimal(12,2)  Default '0.00' ,
+`xfld10`  Decimal(10,0)  Default '0.00' ,
+PRIMARY KEY (`id`) ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `jbh_tdisthead`;
+CREATE TABLE `jbh_tdisthead` (
+`id`  int unsigned NOT NULL auto_increment ,
+`disthead_no` char(20) NOT NULL Default '00',
+`disthead_date` date NOT NULL Default '00-00-0000',
+`disthead_flag` tinyint NOT NULL Default 0,
+`disthead_ismargin` tinyint NOT NULL Default 0,
+`disthead_iscancel` tinyint NOT NULL Default 0,
+`disthead_total` decimal(18,2) NOT NULL Default '0.00',
+`xdisthead_unitid` int NOT NULL Default 0,
+`created_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`created_user`  varchar(20) NOT NULL Default '-' ,
+`update_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
+`update_user`  varchar(20) NOT NULL Default '-' ,
+`xfld01`  tinyint  Default 0 ,
+`xfld02`  int  Default 0 ,
+`xfld03`  bigint  Default 0 ,
+`xfld04`  Decimal(18,2)  Default '0.00' ,
+`xfld05`  Varchar(50)  Default '-' ,
+`xfld06`  Varchar(100)  Default '-' ,
+`xfld07`  Varchar(200)  Default '-' ,
+`xfld08`  Varchar(255)  Default '-' ,
+`xfld09`  Decimal(12,2)  Default '0.00' ,
+`xfld10`  Decimal(10,0)  Default '0.00' ,
+PRIMARY KEY (`id`) ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+
+-- END TRANSACTION TABLE CREATIONS
+
+
+-- START DRILLER(CALCULATION) TABLE CREATIONS
+-- ALL DRILLER(CALCULATION) TABLE MUST BE UNDER THIS COMMENTS
+
