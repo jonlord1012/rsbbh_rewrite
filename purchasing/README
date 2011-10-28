@@ -1,0 +1,23 @@
+### Configuration ###
+
+file: /.htaccess
+Change rewritebase to whatever directory relative to your document_root.
+If you put this app in 'myapp' under your document_root, RewriteBase need to
+changed to '/myapp'.
+
+file: /index.php
+Change $system_path to your codeigniter's 'system' dir. E.g. if you put
+CodeIgniter on parent dir relative to this app, then system path should be:
+$system_path = '../../CodeIgniter-x.x.x/system;
+
+$application_folder should be '../<this dir name>'.
+
+file: /config/database.php
+Setup your database here.
+
+file: /config/config.php
+Change $config['base_url'] to whatever URL this directory reside. E.g. if you
+put this app under 'htdocs/myapp', $config['base_url'] should be
+'http://[hostname]/myapp/', don't forget the trailing space.
+
+$config['index_page'] should be empty to get clean URL.
