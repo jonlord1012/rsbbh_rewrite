@@ -36,10 +36,45 @@ class Accounting extends CI_Controller {
 		$this->load->view('container',$data);
 	}
 */	
-	public function dashboard_load(){
+	public function view_coa(){
 		$data = array(
-			'page_title' => 'Accounting Dashboard',
-			'content' => 'dashboard'
+			'page_title' => 'Accounting:: Char of Account',
+			'content' => 'coa'
+		);
+		$this->load->view('container', $data);
+	}
+	public function view_ledger(){
+		$data = array(
+			'page_title' => 'Accounting:: General Ledger',
+			'content' => 'gledger'
+		);
+		$this->load->view('container', $data);
+	}	
+	public function view_balance(){
+		$data = array(
+			'page_title' => 'Accounting:: Balance Sheet',
+			'content' => 'balance'
+		);
+		$this->load->view('container', $data);
+	}
+	public function gen_pl(){
+		$data = array(
+			'page_title' => 'Accounting:: Profit and Loss',
+			'content' => 'proloss'
+		);
+		$this->load->view('container', $data);
+	}
+	public function gen_post(){
+		$data = array(
+			'page_title' => 'Accounting:: Posting Current Month',
+			'content' => 'post'
+		);
+		$this->load->view('container', $data);
+	}	
+	public function gen_closed(){
+		$data = array(
+			'page_title' => 'Accounting:: Closing Current Month',
+			'content' => 'closed'
 		);
 		$this->load->view('container', $data);
 	}
