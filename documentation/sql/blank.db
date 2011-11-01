@@ -142,7 +142,7 @@ CREATE TABLE `jbh_ms_coagroup` (
 `id` INT unsigned NOT NULL auto_increment,
 `coag_code` char(11) NOT NULL DEFAULT '00',
 `coag_name` varchar(200) not null default 'xxxx',
-`xcoag_coaheadid` int not null default 1,
+`xcoag_headid` int not null default 1,
 `created_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
 `created_user`  varchar(20) NOT NULL Default '-' ,
 `update_datetime`  datetime NOT NULL Default '00-00-0000 00:00:00' ,
@@ -416,7 +416,7 @@ PRIMARY KEY (`id`) ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 DROP TABLE IF EXISTS `jbh_tpurchasedet`;
 CREATE TABLE `jbh_tpurchasedet` (
 `id`  int unsigned NOT NULL auto_increment ,
-`xpurdet_purheadid`  int NOT NULL Default 0 ,
+`xpurdet_headid`  int NOT NULL Default 1 ,
 `xpurdet_invid`  int NOT NULL Default 0 ,
 `purdet_qty`  int NOT NULL Default 0 ,
 `purdet_baseprice`  decimal(12,2) NOT NULL Default '0.00' ,
@@ -479,9 +479,9 @@ PRIMARY KEY (`id`) ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 DROP TABLE IF EXISTS `jbh_trcvdet`;
 CREATE TABLE `jbh_trcvdet` (
 `id`  int unsigned NOT NULL auto_increment ,
-`xrcvdet_rcvheadid`  int NOT NULL Default 0 ,
+`xrcvdet_rcvheadid`  int NOT NULL Default 1 ,
 `xrcvdet_invid`  int NOT NULL Default 0 ,
-`xrcvdet_purheadid` INT NOT NULL DEFAULT 0,
+`xrcvdet_purheadid` INT NOT NULL DEFAULT 1,
 `rcvdet_qty`  int NOT NULL Default 0 ,
 `rcvdet_baseprice`  decimal(12,2) NOT NULL Default '0.00' ,
 `rcvdet_disc`  decimal(10,2) NOT NULL Default '0.00' COMMENT 'Amount Please' ,
@@ -542,7 +542,7 @@ CREATE TABLE `jbh_tretrdet` (
 `xretrdet_retheadid` INT not null,
 `xretrdet_purheadid` INT Not null,
 `xretrdet_rcvheadid` INT not null,
-`xretrdet_distheadid` int not null,
+`xretrdet_distheadid` int not null ,
 `xretrdet_invid` INT NOT NULL,
 `retrdet_qty` DECIMAL(12,2) not null default '0.00',
 `retrdet_baseprice` DECIMAL(12,2) NOT NULL DEFAULT '0.00',
@@ -597,7 +597,7 @@ PRIMARY KEY (`id`) ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 DROP TABLE IF EXISTS `jbh_tdistdet` ;
 CREATE TABLE `jbh_tdistdet` (
 `id` INT UNSIGNED NOT NULL auto_increment,
-`xdistdet_headid` INT NOT NULL,
+`xdistdet_headid` INT NOT NULL default 1,
 `xdistdet_stockid` INT NOT NULL ,
 `xdistdet_price` INT NOT NULL,
 `distdet_qty` DECIMAL(12,2) NOT NULL DEFAULT '0.0',
@@ -674,7 +674,67 @@ CREATE TABLE `jbh_treqdistdet` (
 PRIMARY KEY (`id`) ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS `jbh_trcphead` ;
+CREATE TABLE `jbh_trcphead` (
+`id` INT UNSIGNED NOT NULL auto_increment,
+`rcphead_date` date not null default '00-00-0000',
+`rcphead_no` varchar(40) not null default 'RRI/MMYY00001',
+`rcphead_flag` tinyint not null default 1 comment '1=RRI[rawat inap], 2=RRJ[rawat jalan], 3=URS[umum with Resep], 4=UNR[umum non resep], 5=RKN[Rekanan]',
+`rcphead_status` tinyint not null default 1 comment '1=unpaid, 2=paid, 3=paid with det, 9=cancel' ,
+`xrcphead_pasienid` int not null default 1 comment 'cross database simrs.pasien',
+`xrcphead_paytype` int not null default 1 comment 'payment type based on pasien request',
+`xrcphead_roomid` int not null default 0 comment 'room no, for rawat inap only',
+`rcphead_marginval` decimal(2,2) not null default '0.00' comment 'margin precentage MUST SAVED',
+`rcphead_total` decimal(16,2) not null default '0.00',
+`rcphead_disc` decimal(14,2) not null default '0.00',
+`rcphead_grandtotal` decimal(18,2) not null default '0.00',
+`created_datetime` datetime not null default '00-00-0000 00:00:00',
+`created_user` varchar(20) not null default '-',
+`update_datetime` datetime not null default '00-00-0000 00:00:00',
+`update_user` varchar(20) not null default '-',
+`xfld01` tinyint default 0,
+`xfld02` int default 0,
+`xfld03` bigint default 0,
+`xfld04` decimal(18,2) default '0.00',
+`xfld05` varchar(50) default '-',
+`xfld06` varchar(100) default '-',
+`xfld07` varchar(200) default '-',
+`xfld08` varchar(255) default '-',
+`xfld09` decimal(12,2) default '0.00',
+`xfld10` decimal(10,2) default '0.00',
+PRIMARY KEY (`id`) ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 
+
+DROP TABLE IF EXISTS `jbh_trcpdet` ;
+CREATE TABLE `jbh_trcpdet` (
+`id` INT UNSIGNED NOT NULL auto_increment,
+`xrcpdet_headid` int not null default 1,
+`xrcpdet_invid` int not null default 1,
+`xrcpdet_baseprice` decimal(16,2) not null default '0.00',
+`rcpdet_qty` decimal(6,2) not null default '0.00',
+`rcpdet_price` decimal(16,2) not null default '0.00',
+`rcpdet_marginval` decimal(2,2) not null default '0.00',
+`rcpdet_dosis` varchar(50) not null default '3x1' comment 'dosis minum',
+`rcpdet_ket`  varchar(100) not null default 'Sesudah Makan' comment 'sesudah makan, sebelum tidur, dll',
+`rcpdet_total` decimal(16,2) not null default '0.00',
+`rcpdet_flag` tinyint not null default 1 comment '1=full pay, 2=half, 3=unpaid', 
+`rcpdet_isracik` bit not null default 0 comment '1= racikan refers to save to table jbh_trcpracik',
+`xrcpdet_racikid` int not null default 1 comment 'id di table racik',
+`created_datetime` datetime not null default '00-00-0000 00:00:00',
+`created_user` varchar(20) not null default '-',
+`update_datetime` datetime not null default '00-00-0000 00:00:00',
+`update_user` varchar(20) not null default '-',
+`xfld01` tinyint default 0,
+`xfld02` int default 0,
+`xfld03` bigint default 0,
+`xfld04` decimal(18,2) default '0.00',
+`xfld05` varchar(50) default '-',
+`xfld06` varchar(100) default '-',
+`xfld07` varchar(200) default '-',
+`xfld08` varchar(255) default '-',
+`xfld09` decimal(12,2) default '0.00',
+`xfld10` decimal(10,2) default '0.00',
+PRIMARY KEY (`id`) ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 
 
 -- END TRANSACTION TABLE CREATIONS

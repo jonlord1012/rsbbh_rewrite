@@ -10,12 +10,12 @@
 				<a href="<?php echo site_url('accounting/view_ledger');?>">
 					 <img src= "resources/images/number.png" alt="Ledger">
 				</a>
-			</div>
-			<div class="grid_3"> 
+			</div>			
+			<div class="grid_3" >
 				<a href="<?php echo site_url('accounting/view_balance');?>">
 					<img src= "resources/images/chart.png" alt="Balance">
-				</a>
-				</div>
+				</a>	
+			</div>
 			<div class="clear"></div>			
 		</div>
 			<br />

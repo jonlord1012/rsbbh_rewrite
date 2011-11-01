@@ -35,6 +35,13 @@ class Accounting extends CI_Controller {
 				);
 		$this->load->view('container',$data);
 	}	
+	public function report(){
+		$data = array(
+						'page_title' => 'Accounting:: Reporting',
+						'content' => 'report'
+						);
+		$this->load->view('container', $data);
+	}
 	public function view_coa(){
 		$data = array(
 			'page_title' => 'Accounting:: Char of Account',
