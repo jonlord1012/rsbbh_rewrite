@@ -11,7 +11,7 @@
   </div>
 </div>
 <div id="container-title" class="container_12">
-		<a href="<?php echo site_url('../apotek');?>">
+		<a href="<?php echo site_url() ;?>">
 			<h2 class="inner-title"><img src="../resources/images/back.png"> Apotek Dashboard  </h2>			
 		</a>
 </div>
