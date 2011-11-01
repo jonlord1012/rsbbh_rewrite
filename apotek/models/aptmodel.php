@@ -24,5 +24,22 @@ class Aptmodel extends CI_Model{
 		}
 		return $myreturn;
 	}
+	function get_inventory($id){
+		$this->db->from('jbh_dstockmove');
+		$this->db->where('id', $id);
+		$num = $this->db->count_all_results();
+		if($num <1)
+		{
+			return 0;
+		}
+		else
+		{
+			$myreturn = $this->db->get(); 
+		}
+		return $myreturn;
+	}
+	function get_list_inventory(){
+		return $this->db->get('jbh_ms_inventory');
+	}
 }
 ?>

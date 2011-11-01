@@ -1,0 +1,1192 @@
+-- MySQL dump 10.13  Distrib 5.1.46, for suse-linux-gnu (i686)
+--
+-- Host: localhost    Database: farmasi
+-- ------------------------------------------------------
+-- Server version	5.1.46-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `farmasi`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `farmasi` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `farmasi`;
+
+--
+-- Table structure for table `jbh_ms_auth`
+--
+
+DROP TABLE IF EXISTS `jbh_ms_auth`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_ms_auth` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `auth_code` char(10) NOT NULL DEFAULT 'usr01',
+  `auth_uname` varchar(15) NOT NULL DEFAULT 'username',
+  `auth_pwd` varchar(25) NOT NULL DEFAULT 'MD5 SUM please',
+  `auth_fname` varchar(50) NOT NULL DEFAULT 'Full Name',
+  `auth_isactive` tinyint(4) NOT NULL DEFAULT '1',
+  `xauth_deptid` int(11) NOT NULL DEFAULT '1',
+  `xauth_authgid` int(11) NOT NULL DEFAULT '1',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` varchar(255) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_ms_auth`
+--
+
+LOCK TABLES `jbh_ms_auth` WRITE;
+/*!40000 ALTER TABLE `jbh_ms_auth` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_ms_auth` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_ms_coa`
+--
+
+DROP TABLE IF EXISTS `jbh_ms_coa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_ms_coa` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `coa_code` varchar(11) NOT NULL DEFAULT '00',
+  `coa_name` varchar(200) NOT NULL DEFAULT '-',
+  `coa_dk` char(1) NOT NULL DEFAULT 'D',
+  `coa_pl_bs` char(2) NOT NULL DEFAULT 'PL',
+  `coa_isactive` tinyint(4) NOT NULL DEFAULT '1',
+  `xcoa_coasgid` int(11) NOT NULL DEFAULT '1',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` varchar(255) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_ms_coa`
+--
+
+LOCK TABLES `jbh_ms_coa` WRITE;
+/*!40000 ALTER TABLE `jbh_ms_coa` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_ms_coa` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_ms_coagroup`
+--
+
+DROP TABLE IF EXISTS `jbh_ms_coagroup`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_ms_coagroup` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `coag_code` char(11) NOT NULL DEFAULT '00',
+  `coag_name` varchar(200) NOT NULL DEFAULT 'xxxx',
+  `xcoag_headid` int(11) NOT NULL DEFAULT '1',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` varchar(255) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_ms_coagroup`
+--
+
+LOCK TABLES `jbh_ms_coagroup` WRITE;
+/*!40000 ALTER TABLE `jbh_ms_coagroup` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_ms_coagroup` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_ms_coahead`
+--
+
+DROP TABLE IF EXISTS `jbh_ms_coahead`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_ms_coahead` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `coah_code` char(11) NOT NULL DEFAULT '00',
+  `coah_name` varchar(200) NOT NULL DEFAULT 'xxxx',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` varchar(255) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_ms_coahead`
+--
+
+LOCK TABLES `jbh_ms_coahead` WRITE;
+/*!40000 ALTER TABLE `jbh_ms_coahead` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_ms_coahead` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_ms_coasubg`
+--
+
+DROP TABLE IF EXISTS `jbh_ms_coasubg`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_ms_coasubg` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `coasg_code` char(11) NOT NULL DEFAULT '00',
+  `coasg_name` varchar(200) NOT NULL DEFAULT 'xxxx',
+  `xcoasg_coagid` int(11) NOT NULL DEFAULT '1',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` varchar(255) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_ms_coasubg`
+--
+
+LOCK TABLES `jbh_ms_coasubg` WRITE;
+/*!40000 ALTER TABLE `jbh_ms_coasubg` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_ms_coasubg` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_ms_dept`
+--
+
+DROP TABLE IF EXISTS `jbh_ms_dept`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_ms_dept` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `dept_code` varchar(20) NOT NULL DEFAULT '00xx00',
+  `dept_name` varchar(200) NOT NULL DEFAULT 'xxxxxx',
+  `dept_isactive` tinyint(4) NOT NULL DEFAULT '1',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` varchar(255) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_ms_dept`
+--
+
+LOCK TABLES `jbh_ms_dept` WRITE;
+/*!40000 ALTER TABLE `jbh_ms_dept` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_ms_dept` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_ms_factory`
+--
+
+DROP TABLE IF EXISTS `jbh_ms_factory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_ms_factory` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `factory_code` varchar(10) NOT NULL DEFAULT '00',
+  `factory_name` varchar(200) NOT NULL DEFAULT '00',
+  `factory_address` varchar(255) NOT NULL DEFAULT '-',
+  `factory_phone` varchar(18) NOT NULL DEFAULT '-',
+  `factory_isactive` tinyint(4) NOT NULL DEFAULT '1',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` tinyint(4) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  `xfld06` varchar(100) DEFAULT '-',
+  `xfld07` varchar(200) DEFAULT '-',
+  `xfld08` varchar(255) DEFAULT '-',
+  `xfld09` decimal(12,2) DEFAULT '0.00',
+  `xfld10` decimal(10,0) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_ms_factory`
+--
+
+LOCK TABLES `jbh_ms_factory` WRITE;
+/*!40000 ALTER TABLE `jbh_ms_factory` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_ms_factory` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_ms_gauth`
+--
+
+DROP TABLE IF EXISTS `jbh_ms_gauth`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_ms_gauth` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `gauth_code` char(5) NOT NULL DEFAULT 'user' COMMENT 'fill:: admin, sprvs, user, rprts',
+  `gauth_desc` varchar(15) NOT NULL DEFAULT 'users',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` varchar(255) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_ms_gauth`
+--
+
+LOCK TABLES `jbh_ms_gauth` WRITE;
+/*!40000 ALTER TABLE `jbh_ms_gauth` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_ms_gauth` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_ms_gmenu`
+--
+
+DROP TABLE IF EXISTS `jbh_ms_gmenu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_ms_gmenu` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `gmenu_code` varchar(20) NOT NULL DEFAULT '00',
+  `gmenu_name` varchar(200) NOT NULL DEFAULT 'xxx',
+  `gmenu_lvlhead` tinyint(4) NOT NULL DEFAULT '1' COMMENT 'menu deep levels',
+  `gmenu_isactive` tinyint(4) NOT NULL DEFAULT '1',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` varchar(255) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_ms_gmenu`
+--
+
+LOCK TABLES `jbh_ms_gmenu` WRITE;
+/*!40000 ALTER TABLE `jbh_ms_gmenu` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_ms_gmenu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_ms_inventory`
+--
+
+DROP TABLE IF EXISTS `jbh_ms_inventory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_ms_inventory` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `batch_no` varchar(25) NOT NULL DEFAULT '00',
+  `inventory_code` varchar(20) NOT NULL DEFAULT '00',
+  `inventory_name` varchar(255) NOT NULL DEFAULT '-',
+  `inventory_unit` varchar(10) NOT NULL DEFAULT '-' COMMENT 'satuan barang',
+  `inventory_delunit` varchar(10) NOT NULL DEFAULT '-',
+  `inventory_price_buy` decimal(18,2) NOT NULL DEFAULT '0.00',
+  `inventory_disc_buy` decimal(16,2) NOT NULL DEFAULT '0.00',
+  `inventory_base_price` decimal(18,2) NOT NULL DEFAULT '0.00',
+  `inventory_base_minstock` int(11) NOT NULL DEFAULT '0',
+  `inventory_base_maxstock` int(11) NOT NULL DEFAULT '0',
+  `inventory_expire_date` date NOT NULL DEFAULT '0000-00-00',
+  `inventory_flags` tinyint(4) NOT NULL DEFAULT '0',
+  `inventory_isactive` tinyint(4) NOT NULL DEFAULT '1',
+  `xinv_groupid` varchar(10) NOT NULL DEFAULT '-',
+  `xinv_factoryid` varchar(10) NOT NULL DEFAULT '-',
+  `xinv_rackid` varchar(10) NOT NULL DEFAULT '-',
+  `xinv_coa_persediaanid` varchar(11) NOT NULL DEFAULT '-',
+  `xinv_coa_pendapatanid` varchar(11) NOT NULL DEFAULT '-',
+  `xinv_coa_biayaid` varchar(11) NOT NULL DEFAULT '-',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` tinyint(4) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  `xfld06` varchar(100) DEFAULT '-',
+  `xfld07` varchar(200) DEFAULT '-',
+  `xfld08` varchar(255) DEFAULT '-',
+  `xfld09` decimal(12,2) DEFAULT '0.00',
+  `xfld10` decimal(10,0) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_ms_inventory`
+--
+
+LOCK TABLES `jbh_ms_inventory` WRITE;
+/*!40000 ALTER TABLE `jbh_ms_inventory` DISABLE KEYS */;
+INSERT INTO `jbh_ms_inventory` (`id`, `batch_no`, `inventory_code`, `inventory_name`, `inventory_unit`, `inventory_delunit`, `inventory_price_buy`, `inventory_disc_buy`, `inventory_base_price`, `inventory_base_minstock`, `inventory_base_maxstock`, `inventory_expire_date`, `inventory_flags`, `inventory_isactive`, `xinv_groupid`, `xinv_factoryid`, `xinv_rackid`, `xinv_coa_persediaanid`, `xinv_coa_pendapatanid`, `xinv_coa_biayaid`, `created_datetime`, `created_user`, `update_datetime`, `update_user`, `xfld01`, `xfld02`, `xfld03`, `xfld04`, `xfld05`, `xfld06`, `xfld07`, `xfld08`, `xfld09`, `xfld10`) VALUES (1,'000001','01019534','SODIUM CHLORIDE 500 ML OGB OTSU','FLS','BOX','5578.00','0.00','5578.00',500,10000,'2015-12-12',1,1,'1','1','1','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(2,'000002','01060077','LAB CK-NAC 2 X 62,5 ML','ALAT','BOX','0.00','0.00','0.00',500,10000,'2015-12-12',1,1,'2','2','2','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(3,'000003','01060078','LAB CK-MB 2 X 62,5 ML','ALAT','BOX','0.00','0.00','0.00',500,10000,'2015-12-12',1,1,'2','2','3','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(4,'000004','01060079','LAB HDL PRECIPITANT','ALAT','BOX','0.00','0.00','0.00',500,10000,'2015-12-12',1,1,'2','2','4','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(5,'000005','01019535','RANIVEL SYR 60 ML','FLS','BOX','38500.00','0.00','38500.00',500,10000,'2015-12-12',1,1,'1','1','5','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(6,'000006','01019536','CEFOPERAZONE INJ 1 GR','VIAL','BOX','148500.00','0.00','148500.00',500,10000,'2015-12-12',1,1,'1','1','1','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(7,'000007','01019537','TERANOL TAB 10 MG','BOX','BOX','5197.50','0.00','5197.50',500,10000,'2015-12-12',1,1,'1','1','2','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(8,'000008','01019538','TROVENSIS INJ 4 MG','VIAL','BOX','40004.00','0.00','40004.00',500,10000,'2015-12-12',1,1,'1','1','3','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(9,'000009','01044186','CERTOFIX DUO PAED 413','ALAT','BOX','882900.00','0.00','882900.00',500,10000,'2015-12-12',1,1,'3','3','4','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(10,'000010','01019539','TROVENSIS INJ 8 MG','VIAL','BOX','81490.00','0.00','81490.00',500,10000,'2015-12-12',1,1,'1','1','5','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(11,'000011','01044187','DTL MIRACLE MIX GG','ALAT','BOX','0.00','0.00','0.00',500,10000,'2015-12-12',1,1,'3','3','2','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(12,'000012','01019540','CENDO PROTAGENTA TM 5 ML','FLS','BOX','53956.00','0.00','53956.00',500,10000,'2015-12-12',1,1,'1','1','3','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(13,'000013','01019541','IFLACORT  CRM 10 GR','TUB','BOX','52320.00','0.00','52320.00',500,10000,'2015-12-12',1,1,'1','1','4','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(14,'000014','01019542','GLUCOBAY 50 MG TAB','BOX','BOX','2219.40','0.00','2219.40',500,10000,'2015-12-12',1,1,'1','1','5','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(15,'000015','01019543','ICU BLISTRA 10 MG/10 ML INJ','AMP','BOX','193050.00','0.00','193050.00',500,10000,'2015-12-12',1,1,'1','1','6','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(16,'000016','01019544','SOCEF INJ 1 GR','VIAL','BOX','222750.00','0.00','222750.00',500,10000,'2015-12-12',1,1,'1','1','2','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(17,'000017','01019545','KETOPAIN INJ 30 MG','AMP','BOX','44550.00','0.00','44550.00',500,10000,'2015-12-12',1,1,'1','1','1','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(18,'000018','01044188','BENANG, VICRYL VCP 311 H','ALAT','BOX','134940.00','0.00','134940.00',500,10000,'2015-12-12',1,1,'3','3','2','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(19,'000019','01019546','SOMADRIL COMP TAB','TAB','BOX','5670.00','0.00','5670.00',500,10000,'2015-12-12',1,1,'1','1','3','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(20,'000020','01060080','UREA 2 X 62,5 ML','ALAT','BOX','0.00','0.00','0.00',500,10000,'2015-12-12',1,1,'2','2','4','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(21,'000021','01019547','TAPROS INJ 3,75 MG','BOX','BOX','2114679.15','0.00','2114679.15',500,10000,'2015-12-12',1,1,'1','1','5','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(22,'000022','01044189','WUNDRES N 10 X 10','ALAT','BOX','95040.00','0.00','95040.00',500,10000,'2015-12-12',1,1,'3','3','1','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(23,'000023','01044190','WUNDRES B 10 X 20','ALAT','BOX','148500.00','0.00','148500.00',500,10000,'2015-12-12',1,1,'3','3','2','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(24,'000024','01060081','LAB ELICAL  2','ALAT','BOX','0.00','0.00','0.00',500,10000,'2015-12-12',1,1,'2','2','3','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(25,'000025','01019548','WIDA NS 1000 ML OGB','FLS','BOX','14107.00','0.00','14107.00',500,10000,'2015-12-12',1,1,'1','1','4','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(26,'000026','01033224','MADU TAWON BIMA BESAR','BOT','BOX','27000.00','0.00','27000.00',500,10000,'2015-12-12',1,1,'5','5','5','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(27,'000027','01033225','MADU TAWON BIMA KECIL','BOT','BOX','20250.00','0.00','20250.00',500,10000,'2015-12-12',1,1,'5','5','2','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(28,'000028','01019549','SODIUM CHLORIDE  1000 ML OTSU OGB','FLS','BOX','14107.00','0.00','14107.00',500,10000,'2015-12-12',1,1,'1','1','3','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(29,'000029','01019550','NOVORAVID INJ 100- IU','VIAL','BOX','473715.00','0.00','473715.00',500,10000,'2015-12-12',1,1,'1','1','4','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(30,'000030','01019551','ONDANE INJ 2 MG/2ML','AMP','BOX','26700.00','0.00','26700.00',500,10000,'2015-12-12',1,1,'1','1','5','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0'),(31,'000031','01019552','EUVAX B 0,5 VAKSIN ADULT','VIAL','BOX','61817.00','0.00','61817.00',500,10000,'2015-12-12',1,1,'1','1','6','0','0','0','2011-11-02 03:57:10','JL','2011-11-02 03:57:10','JL',0,0,0,'0.00','-','-','-','-','0.00','0');
+/*!40000 ALTER TABLE `jbh_ms_inventory` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_ms_invgroup`
+--
+
+DROP TABLE IF EXISTS `jbh_ms_invgroup`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_ms_invgroup` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `invgroup_code` varchar(10) NOT NULL DEFAULT '00',
+  `invgroup_name` varchar(100) NOT NULL DEFAULT '-',
+  `invgroup_isactive` tinyint(4) NOT NULL DEFAULT '1',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` tinyint(4) NOT NULL DEFAULT '0',
+  `xfld02` int(11) NOT NULL DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  `xfld06` varchar(100) DEFAULT '-',
+  `xfld07` varchar(200) DEFAULT '-',
+  `xfld08` varchar(255) DEFAULT '-',
+  `xfld09` decimal(12,2) DEFAULT '0.00',
+  `xfld10` decimal(10,0) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_ms_invgroup`
+--
+
+LOCK TABLES `jbh_ms_invgroup` WRITE;
+/*!40000 ALTER TABLE `jbh_ms_invgroup` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_ms_invgroup` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_ms_menu`
+--
+
+DROP TABLE IF EXISTS `jbh_ms_menu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_ms_menu` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `menu_code` varchar(20) NOT NULL DEFAULT '00',
+  `menu_name` varchar(80) NOT NULL DEFAULT 'xxx',
+  `menu_isactive` tinyint(4) NOT NULL DEFAULT '1',
+  `menu_rel` varchar(200) NOT NULL DEFAULT 'assets/js/menu',
+  `xmenu_gmenuid` int(11) NOT NULL DEFAULT '1',
+  `xmenu_authgid` int(11) NOT NULL DEFAULT '3',
+  `xmenu_moduleid` int(11) NOT NULL DEFAULT '1',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` varchar(255) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_ms_menu`
+--
+
+LOCK TABLES `jbh_ms_menu` WRITE;
+/*!40000 ALTER TABLE `jbh_ms_menu` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_ms_menu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_ms_module`
+--
+
+DROP TABLE IF EXISTS `jbh_ms_module`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_ms_module` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `module_code` varchar(30) NOT NULL DEFAULT 'xxxx',
+  `module_rel` varchar(200) NOT NULL DEFAULT '/app_path/module/',
+  `module_isactive` tinyint(4) NOT NULL DEFAULT '1',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` varchar(255) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_ms_module`
+--
+
+LOCK TABLES `jbh_ms_module` WRITE;
+/*!40000 ALTER TABLE `jbh_ms_module` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_ms_module` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_ms_pbf`
+--
+
+DROP TABLE IF EXISTS `jbh_ms_pbf`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_ms_pbf` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pbf_code` varchar(10) NOT NULL DEFAULT '00',
+  `pbf_name` varchar(255) NOT NULL DEFAULT '-',
+  `pbf_address` varchar(255) NOT NULL DEFAULT '-',
+  `pbf_phone` varchar(18) NOT NULL DEFAULT '-',
+  `pbf_isactive` tinyint(4) NOT NULL DEFAULT '1',
+  `xpbf_factoryid` varchar(10) NOT NULL DEFAULT '-',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` tinyint(4) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  `xfld06` varchar(100) DEFAULT '-',
+  `xfld07` varchar(200) DEFAULT '-',
+  `xfld08` varchar(255) DEFAULT '-',
+  `xfld09` decimal(12,2) DEFAULT '0.00',
+  `xfld10` decimal(10,0) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_ms_pbf`
+--
+
+LOCK TABLES `jbh_ms_pbf` WRITE;
+/*!40000 ALTER TABLE `jbh_ms_pbf` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_ms_pbf` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_ms_rack`
+--
+
+DROP TABLE IF EXISTS `jbh_ms_rack`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_ms_rack` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rack_code` varchar(10) NOT NULL DEFAULT '00',
+  `rack_name` varchar(100) NOT NULL DEFAULT '-',
+  `rack_warehouse` varchar(100) NOT NULL DEFAULT '-',
+  `rack_isactive` tinyint(4) NOT NULL DEFAULT '1',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` tinyint(4) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  `xfld06` varchar(100) DEFAULT '-',
+  `xfld07` varchar(200) DEFAULT '-',
+  `xfld08` varchar(255) DEFAULT '-',
+  `xfld09` decimal(12,2) DEFAULT '0.00',
+  `xfld10` decimal(10,0) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_ms_rack`
+--
+
+LOCK TABLES `jbh_ms_rack` WRITE;
+/*!40000 ALTER TABLE `jbh_ms_rack` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_ms_rack` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_ms_unit`
+--
+
+DROP TABLE IF EXISTS `jbh_ms_unit`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_ms_unit` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `unit_code` varchar(10) NOT NULL DEFAULT '00',
+  `unit_name` varchar(200) NOT NULL DEFAULT 'xxx00xx',
+  `unit_isactive` tinyint(4) NOT NULL DEFAULT '1',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` varchar(255) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_ms_unit`
+--
+
+LOCK TABLES `jbh_ms_unit` WRITE;
+/*!40000 ALTER TABLE `jbh_ms_unit` DISABLE KEYS */;
+INSERT INTO `jbh_ms_unit` (`id`, `unit_code`, `unit_name`, `unit_isactive`, `created_datetime`, `created_user`, `update_datetime`, `update_user`, `xfld01`, `xfld02`, `xfld03`, `xfld04`, `xfld05`) VALUES (1,'apt01','Apotek',1,'2011-11-02 01:54:10','JL','2011-11-02 01:54:10','JL','0',0,0,'0.00','-');
+/*!40000 ALTER TABLE `jbh_ms_unit` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_tdistdet`
+--
+
+DROP TABLE IF EXISTS `jbh_tdistdet`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_tdistdet` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `xdistdet_headid` int(11) NOT NULL DEFAULT '1',
+  `xdistdet_stockid` int(11) NOT NULL,
+  `xdistdet_price` int(11) NOT NULL,
+  `distdet_qty` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `distdet_unitid` int(11) NOT NULL COMMENT 'satuan barang',
+  `distdet_iscancel` tinyint(4) NOT NULL DEFAULT '0',
+  `distdet_flag` tinyint(4) NOT NULL DEFAULT '0',
+  `distdet_isretur` tinyint(4) NOT NULL DEFAULT '0',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` tinyint(4) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  `xfld06` varchar(100) DEFAULT '-',
+  `xfld07` varchar(200) DEFAULT '-',
+  `xfld08` varchar(255) DEFAULT '-',
+  `xfld09` decimal(12,2) DEFAULT '0.00',
+  `xfld10` decimal(10,0) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_tdistdet`
+--
+
+LOCK TABLES `jbh_tdistdet` WRITE;
+/*!40000 ALTER TABLE `jbh_tdistdet` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_tdistdet` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_tdisthead`
+--
+
+DROP TABLE IF EXISTS `jbh_tdisthead`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_tdisthead` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `disthead_no` char(20) NOT NULL DEFAULT '00',
+  `disthead_date` date NOT NULL DEFAULT '0000-00-00',
+  `disthead_flag` tinyint(4) NOT NULL DEFAULT '0',
+  `disthead_ismargin` tinyint(4) NOT NULL DEFAULT '0',
+  `disthead_iscancel` tinyint(4) NOT NULL DEFAULT '0',
+  `disthead_total` decimal(18,2) NOT NULL DEFAULT '0.00',
+  `xdisthead_unitid` int(11) NOT NULL DEFAULT '0' COMMENT 'unit yg minta :: \napotek\nigd\nok(ruang operasi)\nruang rawat\npoli ..',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` tinyint(4) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  `xfld06` varchar(100) DEFAULT '-',
+  `xfld07` varchar(200) DEFAULT '-',
+  `xfld08` varchar(255) DEFAULT '-',
+  `xfld09` decimal(12,2) DEFAULT '0.00',
+  `xfld10` decimal(10,0) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_tdisthead`
+--
+
+LOCK TABLES `jbh_tdisthead` WRITE;
+/*!40000 ALTER TABLE `jbh_tdisthead` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_tdisthead` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_tpurchasedet`
+--
+
+DROP TABLE IF EXISTS `jbh_tpurchasedet`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_tpurchasedet` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `xpurdet_headid` int(11) NOT NULL DEFAULT '1',
+  `xpurdet_invid` int(11) NOT NULL DEFAULT '0',
+  `purdet_qty` int(11) NOT NULL DEFAULT '0',
+  `purdet_baseprice` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `purdet_disc` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT 'Amount Please',
+  `purdet_isppn` tinyint(4) NOT NULL DEFAULT '0',
+  `purdet_flags` tinyint(4) NOT NULL DEFAULT '0',
+  `purdet_iscancel` tinyint(4) NOT NULL DEFAULT '0',
+  `purdet_isretur` tinyint(4) NOT NULL DEFAULT '0',
+  `purdet_cancelnote` varchar(255) NOT NULL DEFAULT '-',
+  `purdet_returnote` varchar(255) NOT NULL DEFAULT '-',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` tinyint(4) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  `xfld06` varchar(100) DEFAULT '-',
+  `xfld07` varchar(200) DEFAULT '-',
+  `xfld08` varchar(255) DEFAULT '-',
+  `xfld09` decimal(12,2) DEFAULT '0.00',
+  `xfld10` decimal(10,0) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_tpurchasedet`
+--
+
+LOCK TABLES `jbh_tpurchasedet` WRITE;
+/*!40000 ALTER TABLE `jbh_tpurchasedet` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_tpurchasedet` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_tpurchasehead`
+--
+
+DROP TABLE IF EXISTS `jbh_tpurchasehead`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_tpurchasehead` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `purhead_no` char(20) NOT NULL DEFAULT '00',
+  `purhead_date` date NOT NULL DEFAULT '0000-00-00',
+  `purhead_total` decimal(16,2) NOT NULL DEFAULT '0.00' COMMENT 'TOTAL \nEXCL: -PPN\n	 -DISCOUNT',
+  `purhead_totaldisc` decimal(14,2) NOT NULL DEFAULT '0.00',
+  `purhead_isppn` decimal(14,2) NOT NULL DEFAULT '0.00',
+  `purhead_grandtotal` decimal(18,2) NOT NULL DEFAULT '0.00',
+  `purhead_flags` tinyint(4) NOT NULL DEFAULT '0' COMMENT '- open\n- approved\n- receiving\n- close\n- retur\n',
+  `purhead_iscancel` tinyint(4) NOT NULL DEFAULT '0',
+  `purhead_cancelnote` varchar(255) NOT NULL DEFAULT '-',
+  `purhead_returnote` varchar(255) NOT NULL DEFAULT '-',
+  `purhead_tempo` date NOT NULL DEFAULT '0000-00-00',
+  `xpurhead_factoryid` int(11) NOT NULL DEFAULT '0',
+  `xpurhead_pbfid` int(11) NOT NULL DEFAULT '0',
+  `xpurhead_trcvheadid` int(11) NOT NULL DEFAULT '0',
+  `xpurhead_tretrheadid` int(11) NOT NULL DEFAULT '0',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` tinyint(4) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  `xfld06` varchar(100) DEFAULT '-',
+  `xfld07` varchar(200) DEFAULT '-',
+  `xfld08` varchar(255) DEFAULT '-',
+  `xfld09` decimal(12,2) DEFAULT '0.00',
+  `xfld10` decimal(10,0) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_tpurchasehead`
+--
+
+LOCK TABLES `jbh_tpurchasehead` WRITE;
+/*!40000 ALTER TABLE `jbh_tpurchasehead` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_tpurchasehead` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_trcpdet`
+--
+
+DROP TABLE IF EXISTS `jbh_trcpdet`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_trcpdet` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `xrcpdet_headid` int(11) NOT NULL DEFAULT '1',
+  `xrcpdet_invid` int(11) NOT NULL DEFAULT '1',
+  `xrcpdet_baseprice` decimal(16,2) NOT NULL DEFAULT '0.00',
+  `rcpdet_qty` decimal(6,2) NOT NULL DEFAULT '0.00',
+  `rcpdet_price` decimal(16,2) NOT NULL DEFAULT '0.00',
+  `rcpdet_marginval` decimal(2,2) NOT NULL DEFAULT '0.00',
+  `rcpdet_dosis` varchar(50) NOT NULL DEFAULT '3x1' COMMENT 'dosis minum',
+  `rcpdet_ket` varchar(100) NOT NULL DEFAULT 'Sesudah Makan' COMMENT 'sesudah makan, sebelum tidur, dll',
+  `rcpdet_total` decimal(16,2) NOT NULL DEFAULT '0.00',
+  `rcpdet_flag` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1=full pay, 2=half, 3=unpaid',
+  `rcpdet_isracik` bit(1) NOT NULL DEFAULT b'0' COMMENT '1= racikan refers to save to table jbh_trcpracik',
+  `xrcpdet_racikid` int(11) NOT NULL DEFAULT '1' COMMENT 'id di table racik',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` tinyint(4) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  `xfld06` varchar(100) DEFAULT '-',
+  `xfld07` varchar(200) DEFAULT '-',
+  `xfld08` varchar(255) DEFAULT '-',
+  `xfld09` decimal(12,2) DEFAULT '0.00',
+  `xfld10` decimal(10,2) DEFAULT '0.00',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_trcpdet`
+--
+
+LOCK TABLES `jbh_trcpdet` WRITE;
+/*!40000 ALTER TABLE `jbh_trcpdet` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_trcpdet` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_trcphead`
+--
+
+DROP TABLE IF EXISTS `jbh_trcphead`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_trcphead` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rcphead_date` date NOT NULL DEFAULT '0000-00-00',
+  `rcphead_no` varchar(40) NOT NULL DEFAULT 'RRI/MMYY00001',
+  `rcphead_flag` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1=RRI[rawat inap], 2=RRJ[rawat jalan], 3=URS[umum with Resep], 4=UNR[umum non resep], 5=RKN[Rekanan]',
+  `rcphead_status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1=unpaid, 2=paid, 3=paid with det, 9=cancel',
+  `xrcphead_pasienid` int(11) NOT NULL DEFAULT '1' COMMENT 'cross database simrs.pasien',
+  `xrcphead_paytype` int(11) NOT NULL DEFAULT '1' COMMENT 'payment type based on pasien request',
+  `xrcphead_roomid` int(11) NOT NULL DEFAULT '0' COMMENT 'room no, for rawat inap only',
+  `rcphead_marginval` decimal(2,2) NOT NULL DEFAULT '0.00' COMMENT 'margin precentage MUST SAVED',
+  `rcphead_total` decimal(16,2) NOT NULL DEFAULT '0.00',
+  `rcphead_disc` decimal(14,2) NOT NULL DEFAULT '0.00',
+  `rcphead_grandtotal` decimal(18,2) NOT NULL DEFAULT '0.00',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` tinyint(4) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  `xfld06` varchar(100) DEFAULT '-',
+  `xfld07` varchar(200) DEFAULT '-',
+  `xfld08` varchar(255) DEFAULT '-',
+  `xfld09` decimal(12,2) DEFAULT '0.00',
+  `xfld10` decimal(10,2) DEFAULT '0.00',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_trcphead`
+--
+
+LOCK TABLES `jbh_trcphead` WRITE;
+/*!40000 ALTER TABLE `jbh_trcphead` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_trcphead` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_trcvdet`
+--
+
+DROP TABLE IF EXISTS `jbh_trcvdet`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_trcvdet` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `xrcvdet_rcvheadid` int(11) NOT NULL DEFAULT '1',
+  `xrcvdet_invid` int(11) NOT NULL DEFAULT '0',
+  `xrcvdet_purheadid` int(11) NOT NULL DEFAULT '1',
+  `rcvdet_qty` int(11) NOT NULL DEFAULT '0',
+  `rcvdet_baseprice` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `rcvdet_disc` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT 'Amount Please',
+  `rcvdet_isppn` tinyint(4) NOT NULL DEFAULT '0',
+  `rcvdet_flags` tinyint(4) NOT NULL DEFAULT '0',
+  `rcvdet_iscancel` tinyint(4) NOT NULL DEFAULT '0',
+  `rcvdet_isretur` tinyint(4) NOT NULL DEFAULT '0',
+  `rcvdet_cancelnote` varchar(255) NOT NULL DEFAULT '-',
+  `rcvdet_returnote` varchar(255) NOT NULL DEFAULT '-',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` tinyint(4) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  `xfld06` varchar(100) DEFAULT '-',
+  `xfld07` varchar(200) DEFAULT '-',
+  `xfld08` varchar(255) DEFAULT '-',
+  `xfld09` decimal(12,2) DEFAULT '0.00',
+  `xfld10` decimal(10,0) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_trcvdet`
+--
+
+LOCK TABLES `jbh_trcvdet` WRITE;
+/*!40000 ALTER TABLE `jbh_trcvdet` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_trcvdet` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_trcvhead`
+--
+
+DROP TABLE IF EXISTS `jbh_trcvhead`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_trcvhead` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rcv_no` char(20) NOT NULL DEFAULT '00',
+  `rcv_date` date NOT NULL DEFAULT '0000-00-00',
+  `rcv_total` decimal(16,2) NOT NULL DEFAULT '0.00',
+  `rcv_totaldisc` decimal(14,2) NOT NULL DEFAULT '0.00',
+  `rcv_isppn` decimal(14,2) NOT NULL DEFAULT '0.00',
+  `rcv_grandtotal` decimal(18,2) NOT NULL DEFAULT '0.00',
+  `rcv_fakturno` varchar(50) NOT NULL DEFAULT 'xxx000x',
+  `rcv_flag` tinyint(4) NOT NULL DEFAULT '0',
+  `rcv_iscancel` tinyint(4) NOT NULL DEFAULT '0',
+  `rcv_isretur` tinyint(4) NOT NULL DEFAULT '0',
+  `xrcv_purheadid` int(11) NOT NULL,
+  `xrcv_retrheadid` int(11) NOT NULL DEFAULT '0',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` tinyint(4) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  `xfld06` varchar(100) DEFAULT '-',
+  `xfld07` varchar(200) DEFAULT '-',
+  `xfld08` varchar(255) DEFAULT '-',
+  `xfld09` decimal(12,2) DEFAULT '0.00',
+  `xfld10` decimal(10,0) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_trcvhead`
+--
+
+LOCK TABLES `jbh_trcvhead` WRITE;
+/*!40000 ALTER TABLE `jbh_trcvhead` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_trcvhead` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_treqdistdet`
+--
+
+DROP TABLE IF EXISTS `jbh_treqdistdet`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_treqdistdet` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `xreqds_id` int(11) NOT NULL DEFAULT '1',
+  `xreqds_invid` int(11) NOT NULL DEFAULT '1',
+  `reqds_qty` decimal(6,2) NOT NULL DEFAULT '0.00',
+  `reqds_baseprice` decimal(16,2) NOT NULL DEFAULT '0.00',
+  `reqds_unitid` int(11) NOT NULL DEFAULT '1' COMMENT 'satuan barang',
+  `reqds_iscancel` tinyint(4) NOT NULL DEFAULT '0',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` tinyint(4) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  `xfld06` varchar(100) DEFAULT '-',
+  `xfld07` varchar(200) DEFAULT '-',
+  `xfld08` varchar(255) DEFAULT '-',
+  `xfld09` decimal(12,2) DEFAULT '0.00',
+  `xfld10` decimal(10,0) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_treqdistdet`
+--
+
+LOCK TABLES `jbh_treqdistdet` WRITE;
+/*!40000 ALTER TABLE `jbh_treqdistdet` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_treqdistdet` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_treqdisthead`
+--
+
+DROP TABLE IF EXISTS `jbh_treqdisthead`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_treqdisthead` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `reqds_no` varchar(20) NOT NULL DEFAULT '000',
+  `reqds_date` date NOT NULL DEFAULT '0000-00-00',
+  `reqds_flag` tinyint(4) NOT NULL DEFAULT '1',
+  `reqds_iscancel` tinyint(4) NOT NULL DEFAULT '0',
+  `reqds_total` decimal(14,2) NOT NULL DEFAULT '0.00',
+  `xreqds_unitid` int(11) NOT NULL DEFAULT '1' COMMENT 'Unit(Departemen) peminta',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` tinyint(4) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  `xfld06` varchar(100) DEFAULT '-',
+  `xfld07` varchar(200) DEFAULT '-',
+  `xfld08` varchar(255) DEFAULT '-',
+  `xfld09` decimal(12,2) DEFAULT '0.00',
+  `xfld10` decimal(10,0) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_treqdisthead`
+--
+
+LOCK TABLES `jbh_treqdisthead` WRITE;
+/*!40000 ALTER TABLE `jbh_treqdisthead` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_treqdisthead` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_tretrdet`
+--
+
+DROP TABLE IF EXISTS `jbh_tretrdet`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_tretrdet` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `xretrdet_retheadid` int(11) NOT NULL,
+  `xretrdet_purheadid` int(11) NOT NULL,
+  `xretrdet_rcvheadid` int(11) NOT NULL,
+  `xretrdet_distheadid` int(11) NOT NULL,
+  `xretrdet_invid` int(11) NOT NULL,
+  `retrdet_qty` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `retrdet_baseprice` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `retrdet_flag` tinyint(4) NOT NULL DEFAULT '0',
+  `retrdet_notes` varchar(255) NOT NULL DEFAULT 'RETUR::',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` tinyint(4) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  `xfld06` varchar(100) DEFAULT '-',
+  `xfld07` varchar(200) DEFAULT '-',
+  `xfld08` varchar(255) DEFAULT '-',
+  `xfld09` decimal(12,2) DEFAULT '0.00',
+  `xfld10` decimal(10,0) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_tretrdet`
+--
+
+LOCK TABLES `jbh_tretrdet` WRITE;
+/*!40000 ALTER TABLE `jbh_tretrdet` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_tretrdet` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jbh_tretrhead`
+--
+
+DROP TABLE IF EXISTS `jbh_tretrhead`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jbh_tretrhead` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `retr_no` char(20) NOT NULL DEFAULT '000',
+  `retr_Date` date NOT NULL DEFAULT '0000-00-00',
+  `retr_flags` tinyint(4) NOT NULL DEFAULT '0',
+  `xretr_purheadid` int(11) NOT NULL,
+  `xretr_rcvheadid` int(11) NOT NULL,
+  `xretr_distheadid` int(11) NOT NULL,
+  `retr_notes` varchar(255) NOT NULL,
+  `retr_flag` tinyint(4) NOT NULL,
+  `retr_grandtotal` decimal(18,2) NOT NULL DEFAULT '0.00',
+  `created_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_user` varchar(20) NOT NULL DEFAULT '-',
+  `update_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_user` varchar(20) NOT NULL DEFAULT '-',
+  `xfld01` tinyint(4) DEFAULT '0',
+  `xfld02` int(11) DEFAULT '0',
+  `xfld03` bigint(20) DEFAULT '0',
+  `xfld04` decimal(18,2) DEFAULT '0.00',
+  `xfld05` varchar(50) DEFAULT '-',
+  `xfld06` varchar(100) DEFAULT '-',
+  `xfld07` varchar(200) DEFAULT '-',
+  `xfld08` varchar(255) DEFAULT '-',
+  `xfld09` decimal(12,2) DEFAULT '0.00',
+  `xfld10` decimal(10,0) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jbh_tretrhead`
+--
+
+LOCK TABLES `jbh_tretrhead` WRITE;
+/*!40000 ALTER TABLE `jbh_tretrhead` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jbh_tretrhead` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'farmasi'
+--
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2011-11-02  4:00:15
