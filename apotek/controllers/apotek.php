@@ -23,63 +23,63 @@ class Apotek extends CI_Controller {
 	 */
 	public function index()	{
 		$data = array(
-				'page_title' => 'Accounting Home',
+				'page_title' => 'Apotek Home',
 				'content' => 'home'
 				);
 		$this->load->view('container', $data);
 	}
 	public function master(){
 		$data = array(
-				'page_title' => 'Accounting:: Master Data',
+				'page_title' => 'Apotek:: Master Data',
 				'content' => 'master'
 				);
 		$this->load->view('container',$data);
 	}	
 	public function report(){
 		$data = array(
-						'page_title' => 'Accounting:: Reporting',
+						'page_title' => 'Apotek:: Reporting',
 						'content' => 'report'
 						);
 		$this->load->view('container', $data);
 	}
 	public function view_coa(){
 		$data = array(
-			'page_title' => 'Accounting:: Char of Account',
+			'page_title' => 'Apotek:: Char of Account',
 			'content' => 'coa'
 		);
 		$this->load->view('container', $data);
 	}
 	public function view_ledger(){
 		$data = array(
-			'page_title' => 'Accounting:: General Ledger',
+			'page_title' => 'Apotek:: General Ledger',
 			'content' => 'gledger'
 		);
 		$this->load->view('container', $data);
 	}	
 	public function view_balance(){
 		$data = array(
-			'page_title' => 'Accounting:: Balance Sheet',
+			'page_title' => 'Apotek:: Balance Sheet',
 			'content' => 'balance'
 		);
 		$this->load->view('container', $data);
 	}
 	public function gen_pl(){
 		$data = array(
-			'page_title' => 'Accounting:: Profit and Loss',
+			'page_title' => 'Apotek:: Profit and Loss',
 			'content' => 'proloss'
 		);
 		$this->load->view('container', $data);
 	}
 	public function gen_post(){
 		$data = array(
-			'page_title' => 'Accounting:: Posting Current Month',
+			'page_title' => 'Apotek:: Posting Current Month',
 			'content' => 'post'
 		);
 		$this->load->view('container', $data);
 	}	
 	public function gen_closed(){
 		$data = array(
-			'page_title' => 'Accounting:: Closing Current Month',
+			'page_title' => 'Apotek:: Closing Current Month',
 			'content' => 'closed'
 		);
 		$this->load->view('container', $data);

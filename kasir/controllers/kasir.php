@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Accounting extends CI_Controller {
+class Kasir extends CI_Controller {
 	
 	public function __construct() {
 		parent::__construct();
@@ -23,63 +23,63 @@ class Accounting extends CI_Controller {
 	 */
 	public function index()	{
 		$data = array(
-				'page_title' => 'Accounting Home',
+				'page_title' => 'Kasir Home',
 				'content' => 'home'
 				);
 		$this->load->view('container', $data);
 	}
 	public function master(){
 		$data = array(
-				'page_title' => 'Accounting:: Master Data',
+				'page_title' => 'Kasir:: Master Data',
 				'content' => 'master'
 				);
 		$this->load->view('container',$data);
 	}	
 	public function report(){
 		$data = array(
-						'page_title' => 'Accounting:: Reporting',
+						'page_title' => 'Kasir:: Reporting',
 						'content' => 'report'
 						);
 		$this->load->view('container', $data);
 	}
 	public function view_coa(){
 		$data = array(
-			'page_title' => 'Accounting:: Char of Account',
+			'page_title' => 'Kasir:: Char of Account',
 			'content' => 'coa'
 		);
 		$this->load->view('container', $data);
 	}
 	public function view_ledger(){
 		$data = array(
-			'page_title' => 'Accounting:: General Ledger',
+			'page_title' => 'Kasir:: General Ledger',
 			'content' => 'gledger'
 		);
 		$this->load->view('container', $data);
 	}	
 	public function view_balance(){
 		$data = array(
-			'page_title' => 'Accounting:: Balance Sheet',
+			'page_title' => 'Kasir:: Balance Sheet',
 			'content' => 'balance'
 		);
 		$this->load->view('container', $data);
 	}
 	public function gen_pl(){
 		$data = array(
-			'page_title' => 'Accounting:: Profit and Loss',
+			'page_title' => 'Kasir:: Profit and Loss',
 			'content' => 'proloss'
 		);
 		$this->load->view('container', $data);
 	}
 	public function gen_post(){
 		$data = array(
-			'page_title' => 'Accounting:: Posting Current Month',
+			'page_title' => 'Kasir:: Posting Current Month',
 			'content' => 'post'
 		);
 		$this->load->view('container', $data);
 	}	
 	public function gen_closed(){
 		$data = array(
-			'page_title' => 'Accounting:: Closing Current Month',
+			'page_title' => 'Kasir:: Closing Current Month',
 			'content' => 'closed'
 		);
 		$this->load->view('container', $data);
