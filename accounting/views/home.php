@@ -1,5 +1,3 @@
-<div class="inner">
-	<h2 class="inner-title"> Accounting Dashboard </h2>
 	<div class="form-container" id="frmdash_acc">
 		<div class="roller" id="master">
 			<div class="grid_3"> &nbsp; </div>
@@ -41,5 +39,3 @@
 			<div class="clear"></div>
 		</div>
 	</div>
-</div>
-<br />

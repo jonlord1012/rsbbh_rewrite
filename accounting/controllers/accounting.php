@@ -28,14 +28,13 @@ class Accounting extends CI_Controller {
 				);
 		$this->load->view('container', $data);
 	}
-/*	private function main_ac(){
+	public function master(){
 		$data = array(
-				'page_title' => 'Accounting Home',
-				'content' => 'home'
+				'page_title' => 'Accounting:: Master Data',
+				'content' => 'master'
 				);
 		$this->load->view('container',$data);
-	}
-*/	
+	}	
 	public function view_coa(){
 		$data = array(
 			'page_title' => 'Accounting:: Char of Account',
