@@ -5,6 +5,7 @@ class Apotek extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->helper('utility');
+		$this->load->model(array('aptmodel'));
 	}
 	/**
 	 * Index Page for this controller.
@@ -28,60 +29,25 @@ class Apotek extends CI_Controller {
 				);
 		$this->load->view('container', $data);
 	}
+	public function home(){		
+		$data	= array(
+						'page_title'=>'Unit List',
+						'content' => 'dumper'
+						);
+		$this->load->view('container',$data);
+	}
 	public function master(){
 		$data = array(
-				'page_title' => 'Apotek:: Master Data',
+				'page_title' => 'Kasir:: Master Data',
 				'content' => 'master'
 				);
 		$this->load->view('container',$data);
 	}	
 	public function report(){
 		$data = array(
-						'page_title' => 'Apotek:: Reporting',
+						'page_title' => 'Kasir:: Reporting',
 						'content' => 'report'
 						);
-		$this->load->view('container', $data);
-	}
-	public function view_coa(){
-		$data = array(
-			'page_title' => 'Apotek:: Char of Account',
-			'content' => 'coa'
-		);
-		$this->load->view('container', $data);
-	}
-	public function view_ledger(){
-		$data = array(
-			'page_title' => 'Apotek:: General Ledger',
-			'content' => 'gledger'
-		);
-		$this->load->view('container', $data);
-	}	
-	public function view_balance(){
-		$data = array(
-			'page_title' => 'Apotek:: Balance Sheet',
-			'content' => 'balance'
-		);
-		$this->load->view('container', $data);
-	}
-	public function gen_pl(){
-		$data = array(
-			'page_title' => 'Apotek:: Profit and Loss',
-			'content' => 'proloss'
-		);
-		$this->load->view('container', $data);
-	}
-	public function gen_post(){
-		$data = array(
-			'page_title' => 'Apotek:: Posting Current Month',
-			'content' => 'post'
-		);
-		$this->load->view('container', $data);
-	}	
-	public function gen_closed(){
-		$data = array(
-			'page_title' => 'Apotek:: Closing Current Month',
-			'content' => 'closed'
-		);
 		$this->load->view('container', $data);
 	}
 }

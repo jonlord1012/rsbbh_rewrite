@@ -3,7 +3,7 @@
       <p>Accounting Module | Copyright &copy; 2011</p>
     </div>
     <div class="grid_2">
-      <p>Versio 0.1alpha</p>
+      <p>Version 0.1alpha</p>
     </div>
     <div class="clear"></div>
   </div><!-- #footer -->
