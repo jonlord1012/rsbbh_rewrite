@@ -9,6 +9,9 @@ class Supplier extends CI_Controller
 {
   public function __construct(){
     parent::__construct();
+    $this->load->model('supplier_model');
+    $this->load->helper('flexigrid');
+    $this->load->library('flexigrid');
   }
   
   public function index() {
@@ -16,25 +19,38 @@ class Supplier extends CI_Controller
       'page_title' => 'Supplier',
       'content' => 'supplier/list'
     );
-    $this->load->model('supplier_model');
     
-    $q = $this->supplier_model->get();
-    if ($q->num_rows() <= 0) {
-      $data['factories'] = false;
-      $this->load->view('container', $data);
-      return;
-    }
-    
-    foreach ($q->result() as $fact) {
-      $data['companies'][$fact->id]['id'] = $fact->id;
-      $data['companies'][$fact->id]['factory_code'] = $fact->factory_code;
-      $data['companies'][$fact->id]['factory_name'] = $fact->factory_name;
-      $data['companies'][$fact->id]['factory_address'] = $fact->factory_address;
-      $data['companies'][$fact->id]['factory_phone'] = $fact->factory_phone;
-      $data['companies'][$fact->id]['factory_isactive'] = $fact->factory_isactive;
-    }
+    $column['id'] = array('ID', 40, TRUE, 'center', 2);
+    $column['factory_code'] = array('Supplier Code', 40, TRUE, 'center', 2);
+    $column['factory_name'] = array('Supplier Name', 40, TRUE, 'center', 2);
+    $column['factory_address'] = array('Address', 60, TRUE, 'center', 2);
+    $column['factory_phone'] = array('Phone', 40, TRUE, 'center', 2);
+    $column['factory_isactive'] = array('Active', 40, TRUE, 'center', 2);
+    $grid_js = build_grid_js('supplier-grid', site_url('/supplier/xget'), $column, 'id', 'asc');
+    $data['js_grid'] = $grid_js;
     
     $this->load->view('container', $data);
+  }
+  
+  public function xget() {
+    $valid_fields = array('id', 'factory_name');
+    $this->flexigrid->validate_post('id', 'asc', $valid_fields);
+    $suppliers = $this->supplier_model->get();
+    $this->output->set_header($this->config->item('json_header'));
+    
+    $records_items = array();
+    foreach ($suppliers['records']->result() as $supplier) {
+      $records_items[] = array(
+        $supplier->id,
+        $supplier->factory_code,
+        $supplier->factory_name,
+        $supplier->factory_address,
+        $supplier->factory_phone,
+        $supplier->factory_isactive
+      );
+    }
+    
+    $this->output->set_output($this->flexigrid->json_build($suppliers['record_count'], $records_items));
   }
   
   public function add_new() {
