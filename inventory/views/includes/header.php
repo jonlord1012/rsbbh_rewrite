@@ -15,6 +15,8 @@
   <?php load_javascript('jquery-1.6.4');?>
   <?php load_javascript('jquery-ui-1.8.16.custom.min');?>
   <?php load_javascript('jquery.validate');?>
+  <?php load_css('flexigrid');?>
+  <?php load_javascript('flexigrid.pack');?>
   <?php load_css('style');?>
   <?php load_javascript('general');?>
   <title><?php echo $page_title;?></title>
