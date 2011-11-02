@@ -1,8 +1,10 @@
 <?php if (!defined('BASEPATH')) exit("No direct script access allowed");
 
 class Supplier_model extends CI_Model {
+  protected $CI;
   public function __construct() {
     parent::__construct();
+    $this->CI =& get_instance();
   }
   
   public function add($spec) {
@@ -18,11 +20,19 @@ class Supplier_model extends CI_Model {
     return $this->db->insert_id();
   }
   
-  public function get($id = null, $limit = 0, $offset = 0) {
-    if (!$id) {
-      $this->db->select('id, factory_code, factory_name, factory_address, factory_phone, factory_isactive');
-      $q = $this->db->get('jbh_ms_factory');
-    }
-    return $q;
+  public function get() {
+    $this->db->select('id, factory_code, factory_name, factory_address, factory_phone, factory_isactive');
+    $this->db->from('jbh_ms_factory');
+    $this->CI->flexigrid->build_query();
+    $val['records'] = $this->db->get();
+    
+    $this->db->select('count(id) as record_count');
+    $this->db->from('jbh_ms_factory');
+    $this->CI->flexigrid->build_query(FALSE);
+    $record_count = $this->db->get();
+    $row = $record_count->row();
+    
+    $val['record_count'] = $row->record_count;
+    return $val;
   }
 }
