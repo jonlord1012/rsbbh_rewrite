@@ -15,13 +15,19 @@
   <?php load_javascript('jquery-1.6.4');?>
   <?php load_javascript('jquery-ui-1.8.16.custom.min');?>
   <?php load_javascript('jquery.validate');?>
+  <?php load_css('flexigrid');?>
+  <?php load_javascript('flexigrid.pack');?>
   <?php load_css('style');?>
-  <?php load_javascript('general');?>
-  <title><?php echo $page_title;?></title>
+  <?php load_javascript('general');?>  
+	<?php if (isset($extraHeadContent)){ load_javascript($extraHeadContent);}?>  
+
+	<title><?php echo $page_title;?></title>
+
 </head>
-<body class="<?php echo $page_title;?>">
+<body class="<?php echo $page_title;?>" <?php if(isset($extraBodyLoad)){echo $extraBodyLoad ;}?>>
 <div id="wrap" class="container_12">
   <div id="header">
     <?php $this->load->view('menus/default');?>
+
     <div class="clear"></div>
   </div><!-- #header -->

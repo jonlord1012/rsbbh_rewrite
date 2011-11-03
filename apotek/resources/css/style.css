@@ -1,0 +1,26 @@
+.willbehidden {
+	visibility: hidden;
+	width: 100px;
+}
+.detail_obat {	
+	width: 860px;
+}
+.detail_obat .txt_big {
+	width: 80px;
+}
+.detail_obat .txt_small {
+	width: 40px;
+}
+.detail_obat .label {
+	display: inline-block;
+	padding-left: 10px;
+	padding-right: 4px;
+}
+.detail_obat .clearfix {
+	content: "."; 
+	display: block; 
+	height: 0; 
+	clear: both; 
+	visibility: hidden;
+	padding-left: 10px;
+}

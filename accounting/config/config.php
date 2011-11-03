@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/farmasi/accounting/';
+$config['base_url']	= 'http://192.168.1.250/farmasi/accounting/';
 
 /*
 |--------------------------------------------------------------------------
