@@ -31,7 +31,7 @@
 		$this->output->set_header($this->config->item('json_header'));
 		$this->output->set_output($this->flexigrid->json_build); 
 */	?>
-		<?echo $js_grid;?>
-	<table id="grid" style="display:none"></table>	
+		<? print $js_grid;?>
+	<table id="grid" ></table>	
 	</div>
 </div>

@@ -25,9 +25,10 @@ class Aptmodel extends CI_Model{
 		}
 		return $myreturn;
 	}
-	public function get_inventory($id){
-		$this->db->from('jbh_ms_inventory');
-		$this->db->where('id', $id);
+	public function get_inventory(){
+		//$this->db->from('jbh_ms_inventory');
+		//$this->db->where('id', $id);
+		$this->db->get('jbh_v_inv');
 		$num = $this->db->count_all_results();
 		if($num <1)
 		{
@@ -35,7 +36,7 @@ class Aptmodel extends CI_Model{
 		}
 		else
 		{
-			$myreturn = $this->db->get(); 
+			$myreturn = $this->db->get('jbh_v_inv')->result(); 
 		}
 		return $myreturn;
 	}
@@ -43,7 +44,7 @@ class Aptmodel extends CI_Model{
 		return $this->db->get('jbh_ms_inventory');
 	}
 	public function getfordet(){
-		$this->db->select('id , inventory_code , inventory_name ,inventory_unit , inventory_baseprice , inventory_group');
+		//$this->db->select('id , inventory_code , inventory_name ,inventory_unit , inventory_baseprice , inventory_group');		
 		$this->db->from('jbh_v_inv');
 		$this->CI->flexigrid->build_query();
     $val['records'] = $this->db->get();

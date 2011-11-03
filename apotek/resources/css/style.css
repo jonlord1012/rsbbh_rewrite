@@ -24,3 +24,43 @@
 	visibility: hidden;
 	padding-left: 10px;
 }
+/* Autocomplete
+----------------------------------*/
+.detail_obat .ui-autocomplete { position: absolute; cursor: default; }
+.detail_obat .ui-autocomplete-loading { background: white url('../css/ss-ijo/images/ui-anim_basic_16x16.gif') right center no-repeat; }*/
+ 
+            /* workarounds */
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+ 
+            /* Menu
+----------------------------------*/
+.detail_obat .ui-menu {
+    list-style:none;
+    padding: 2px;
+    margin: 0;
+    display:block;
+}
+.detail_obat .ui-menu .ui-menu {
+    margin-top: -3px;
+}
+.detail_obat .ui-menu .ui-menu-item {
+    margin:0;
+    padding: 0;
+    zoom: 1;
+    float: left;
+    clear: left;
+    width: 100%;
+    font-size:80%;
+}
+.detail_obat .ui-menu .ui-menu-item a {
+    text-decoration:none;
+    display:block;
+    padding:.2em .4em;
+    line-height:1.5;
+    zoom:1;
+}
+.detail_obat .ui-menu .ui-menu-item a.ui-state-hover,
+.detail_obat .ui-menu .ui-menu-item a.ui-state-active {
+    font-weight: normal;
+    margin: -1px;
+}

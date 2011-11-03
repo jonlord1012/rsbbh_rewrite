@@ -6,15 +6,19 @@ class Apotek extends CI_Controller {
 		parent::__construct();
 		//$this->load->helper('utility');
 		$this->load->model('aptmodel');
+		$this->load->model('invmodel');
     $this->load->helper('flexigrid');
     $this->load->library('flexigrid');
 		//$this->load->library('form_validation');		
 	}
 	public function index()	{
-		$data = array(
+/*		$data = array(
 				'page_title' => 'Apotek Home',
 				'content' => 'home'
-				);
+				);*/
+		$data['page_title']= 'Test Index';
+		$data['content']='';
+		$data['fill']= $this->aptmodel->get_inventory();
 		$this->load->view('container', $data);
 	}
 	public function home(){		
@@ -54,8 +58,8 @@ class Apotek extends CI_Controller {
 					'content' => 'resep_make'
 					 );
 		$this->load->library('form_validation');
-		$data['extraHeadContent'] = 'inv_float';
-		$data['extraBodyLoad']= "onload ='placeItInv() ;'";				
+		$data['extraHeadContent'] = 'search';
+		/*$data['extraBodyLoad']= "onload ='placeItInv() ;'";*/				
 		$rules = array(
 							 array(
 						    'field' => 'rcphead_no',		
@@ -88,7 +92,6 @@ class Apotek extends CI_Controller {
 		$data['db_status'] = NULL;
 		$data['js_grid']= $this->add_detail();
 		if ($data['form_validate']) {
-			$this->load->model('aptmodel');
 			$rcpdata = array(
 			'rcphead_no' => $this->input->post('rcphead_no', TRUE),
 			'rcphead_date' => $this->input->post('rcphead_date', TRUE),
@@ -101,36 +104,62 @@ class Apotek extends CI_Controller {
 		$this->load->view('container', $data);
 	 }	
 	public function add_detail(){
-/*		$data	= array(
-						'page_title'=>'Unit List',
+		$data	= array(
+						'page_title'=>'inventory List',
 						'content' => 'dumper'						
-						);*/		
+						);		
 		$column['id'] = array('ID', 40, TRUE, 'center', 2);
-    $column['inventory_code'] = array('Inventory Code', 40, TRUE, 'center', 2);
-    $column['inventory_name'] = array('Inventory Name', 100, TRUE, 'center', 2);
-    $column['inventory_unit'] = array('Qty', 80, TRUE, 'center', 2);
-    $column['inventory_baseprice'] = array('Price', 60, TRUE, 'center', 2);
-    $column['inventory_group'] = array('Subtotal', 80, TRUE, 'center', 2);
+    $column['inventory_code'] = array('Inventory Code', 40, TRUE, 'left', 2);
+    $column['inventory_name'] = array('Inventory Name', 200, TRUE, 'left', 2);
+    $column['inventory_unit'] = array('Unit', 60, TRUE, 'left', 2);
+    $column['inventory_baseprice'] = array('Price', 80, TRUE, 'center', 2);
+    $column['inventory_group'] = array('Group', 150, TRUE, 'left', 2);
     $grid_js = build_grid_js('grid', site_url('/apotek/getdet'), $column, 'id', 'asc');
-    $data['js_grid'] = $grid_js;		
+		$data['js_grid'] = $grid_js;
 		return $data['js_grid'];
-		/*$this->load->view('container', $data);*/
+
+		
 	}
 	public function getdet(){
 		$valid_fields = array('id', 'inventory_code','inventory_name', 'inventory_unit', 'inventory_baseprice', 'inventory_group');
     $this->flexigrid->validate_post('id', 'asc', $valid_fields);
     $details = $this->aptmodel->getfordet();
-    $this->output->set_header($this->config->item('json_header'));    
+    $this->output->set_header($this->config->item('json_header')); 
+		   
     $records_items = array();
     foreach ($details['records']->result() as $detail) {
       $records_items[] = array(
       				$detail->id,
-      				$detail->invetory_code,
-      				$detail->invetory_name,
-      				$detail->invetory_unit,
-      				$detail->invetory_baseprice,
-      				$detail->invetory_group );
+      				$detail->id,
+      				$detail->inventory_code,
+      				$detail->inventory_name,
+      				$detail->inventory_unit,
+      				$detail->inventory_baseprice,
+      				$detail->inventory_group );
 		}
-    $this->output->set_output($this->flexigrid->json_build($details['record_count'], $records_items));							
+    $this->output->set_output($this->flexigrid->json_build($details['record_count'], $records_items));
 	} 
+	public function lookup(){
+		$keyword = $this->input->post('term');
+		$data['response']='false';
+		$sqlresult = $this->invmodel->find_inv($keyword);
+		$this->output->set_header($this->config->item('json_header'));
+		
+		if (!empty($sqlresult)){
+			$data['response']='true';
+		}
+			$data = array();
+			foreach ($sqlresult['records']->result() as $vals){
+				$inventory = $vals->inventory_code." - " . $vals->inventory_name;
+				$data[]= array(
+					$vals->id,
+					$inventory);					
+			}
+		if ('IS_AJAX'){
+			echo json_encode($data);
+			//$this->output->set_content_type('application/json')->set_output(json_encode($data));	
+		}/*else{
+			$this->load->view('container', $data);
+		}		*/
+	}
 }

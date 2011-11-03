@@ -65,8 +65,18 @@
     </div>    
     <div class="container_12" id="rcpdet">
     	<div class="detail_obat">
+    			<div class="detail_obat">
     			<label for="rcpdet_invcode" class="label">Kode Barang</label>
-    			<input type="text" class="txt_big" id="rcpdet_invcode" value="<?php echo (!empty($rcpdet_invcode))? $rcpdet_invcode : '' ;?>" />
+    			<!--<input type="text" class="txt_big" id="rcpdet_invcode" value="<?php echo (!empty($rcpdet_invcode))? $rcpdet_invcode : '' ;?>" />
+-->				<?php
+						$propertyid= array(
+							'id'=>'invid',
+							'name'=>'invid',							
+							'maxlength'=>'11',							
+							'size'=> '10'							
+							 );
+						echo form_input($propertyid);
+					?>					
     			<input type="hidden" class="willbehidden" id="rcpdet_invid" />
     			<input type="hidden" class="willbehidden" id="rcpdet_baseprice" />    			
     			<label for="rcpdet_qty" class="label">Quantity</label>
@@ -77,14 +87,15 @@
     			<input type="text" class="txt_big" id="rcpdet_ket" value="<?php echo (!empty($rcpdet_ket))? $rcpdet_ket: '';?>" />    		
 <!--    		<input type="text" id="rcpdet_baseprice" value="<?php echo (!empty($rcpdet_baseprice))? $rcpdet_baseprice : '0' ;?>" />
 -->			<?php echo form_submit('Submit', 'Tambah');?>
-				<div class="clearfix"></div>    		
+				<div class="clear"></div>
+        <div id="result"></div>
     	</div>
     </div>
     
 		<div class="container_12" id="grid_detail">
 			<?php echo $js_grid ;?>			
 			<table id="grid" style="display:none"></table>
-			<div class="clearfix"></div>
+			<div class="clear"></div>
 		</div>
     <div class="roller">
     	<?php echo form_submit('Submit', 'Submit');?>
@@ -95,49 +106,3 @@
     </script>    
   </div>
 </div>
-<!-- float_inv -->
-<div id="float_inv" style="float:left; background-color:yellow; padding:3px; border:1px solid black; left:20; top:15; width:410px; visibility:hidden">
-	<form id="getBarang" name="getBarang" method="post" action="<?$_SERVER['PHP_SELF']?>" enctype="multipart/form-data">
-  <span style="float:right; background-color:gray; color:white; font-weight:bold; width='20px'; text-align:center; cursor:pointer" onclick="javascript:hideItInv()">
-	<b>X</b>
-  </span>
-	  <table border="0" cellpadding="0" cellspacing="0" width="100%" id="inv_list">
-		<tr>
-		  <td>
-			<table border=0 cellpadding=2 cellspacing=2 width=400px>
-			  <tr bgcolor=#414141 align=center>
-				<td><font color=#FFFFFF>#</font></td>
-				<td width=50px><font color=#FFFFFF>Kode Barang</font></td>
-				<td><font color=#FFFFFF>Nama</font></td>
-				<td width=35px><font color=#FFFFFF>Stock</font></td>
-			  </tr>
-
-					<?php /*
-					$no = 1;
-					while ($result = mysql_fetch_array($strQBarang))
-					{
-					$idme = $result['id'];
-					$nameme= $result['kd_barang']." - ".$result['nama']. "\\nStok: " . $result['stok'];
-					$harga = $result['harga_dosp'];
-					if ($no%2){
-			  ?>
-				  <tr valign=top onclick="hideItBarang(<?= $idme ?>,'<?= $nameme ?>', '<?= $harga ?>', '<?= $satuan ?>', '<?= $stok ?>'); showInput(); submit();"> 
-					<?php	  }else{ ?>
-				  <tr bgcolor=#CCCCCC valign=top onclick="hideItBarang(<?= $idme ?>,'<?= $nameme ?>', '<?= $harga ?>', '<?= $satuan ?>', '<?= $stok ?>'); showInput(); submit();">
-					<?php  } echo "<td align = center>$no"; ?>
-					<input type='hidden' id='idme' value='<?php echo $result['id'] ; ?>' />
-					<input type='hidden' id='kode' value='<?php echo $result['kd_barang']; ?>'  />
-					<input type='hidden' id='nama' value='<?php echo $result['nama']; ?>'  />																		
-					<?php
-					echo "</td>
-					<td>$result[kd_barang]</td>
-					<td>$result[nama]</td>
-					</tr>";
-					$no++;
-				}
-				*/?>
-		  </table>
-		</td>
-	  </tr>
-	  </table>
-</div>   
